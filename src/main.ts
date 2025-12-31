@@ -1,12 +1,21 @@
 import { createApp } from 'vue'
+import PrimeVue from 'primevue/config'
+import Material from '@primeuix/themes/material'
 import { createPinia } from 'pinia'
-
 import App from './App.vue'
 import router from './router'
+import Ripple from 'primevue/ripple'
+import './style.css'
 
+const pinia = createPinia()
 const app = createApp(App)
 
-app.use(createPinia())
+app.use(PrimeVue, {
+  theme: {
+    preset: Material,
+  },
+})
+app.directive('ripple', Ripple)
 app.use(router)
-
+app.use(pinia)
 app.mount('#app')
