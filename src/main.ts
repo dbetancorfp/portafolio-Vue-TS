@@ -1,5 +1,7 @@
 import { createApp } from 'vue'
 import PrimeVue from 'primevue/config'
+import 'primeflex/themes/primeone-light.css'
+import 'primeflex/primeflex.css'
 import Material from '@primeuix/themes/material'
 import { createPinia } from 'pinia'
 import App from './App.vue'
