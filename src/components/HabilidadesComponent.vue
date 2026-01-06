@@ -1,21 +1,24 @@
 <template>
-  <section id="skills" v-if="portfolio">
-    <h1>{{ portfolio.data.habilidades?.titulo }}</h1>
-    <ul>
-      <div v-for="habilidad in portfolio.data.habilidades?.categorias" :key="habilidad.id">
-        <h2>{{ habilidad.nombre }}</h2>
-        <li v-for="skill in habilidad.items" :key="skill.id">{{ skill.nombre }}</li>
+  <section id="skills" v-if="skills?.categorias?.length">
+    <h1>{{ skills.titulo }}</h1>
+
+    <div class="grid">
+      <div
+        v-for="(categoria, idx) in skills.categorias"
+        :key="idx"
+        class="col-12 md:col-6 lg:col-4"
+      >
+        <CardHabilidades :item="categoria" />
       </div>
-    </ul>
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { usePortfolioStore } from '../stores/portfolio.js'
+import { computed } from 'vue'
+import { usePortfolioStore } from '../stores/portfolio'
+import CardHabilidades from '../components/CardHabilidades.vue'
 
 const portfolio = usePortfolioStore()
+const skills = computed(() => portfolio.data?.habilidades ?? null)
 </script>
-
-<style scoped>
-/* Estilos específicos */
-</style>

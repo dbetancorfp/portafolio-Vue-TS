@@ -1,19 +1,19 @@
 <template>
-  <section id="experience" v-if="portfolio">
-    <h1>{{ portfolio.data.experiencia?.titulo }}</h1>
+  <section id="experience" v-if="exp?.items?.length">
+    <h1>{{ exp.titulo }}</h1>
+
     <div class="grid">
-      <CardExperience
-        v-for="(item, idx) in portfolio.data.experiencia?.items"
-        :key="itemKey(item, idx)"
-        :item="item"
-      />
+      <div v-for="(item, idx) in exp.items" :key="itemKey(item, idx)" class="col-12 md:col-6">
+        <CardExperience :item="item" />
+      </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { usePortfolioStore } from '../stores/portfolio.js'
-import CardExperience from './CardExperience.vue'
+import { computed } from 'vue'
+import { usePortfolioStore } from '../stores/portfolio'
+import CardExperience from '../components/CardExperience.vue'
 
 type ExperienceItem = {
   rol: string
@@ -27,16 +27,9 @@ type ExperienceItem = {
 }
 
 const portfolio = usePortfolioStore()
+const exp = computed(() => portfolio.data?.experiencia ?? null)
 
-function itemKey(item: ExperienceItem, idx: string | number) {
-  // Clave estable sin depender de un id que no existe en el JSON
+function itemKey(item: ExperienceItem, idx: number) {
   return `${item.empresa}-${item.rol}-${item.fechaInicio}-${idx}`
 }
 </script>
-
-<style scoped>
-.grid {
-  display: grid;
-  gap: 1rem;
-}
-</style>

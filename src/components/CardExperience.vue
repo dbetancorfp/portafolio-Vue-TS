@@ -1,34 +1,57 @@
 <template>
-  <article class="card">
-    <header class="card__header">
-      <div>
-        <h2 class="card__title">{{ item.empresa }}</h2>
-        <h3 class="card__subtitle">{{ item.rol }}</h3>
-        <p v-if="item.ubicacion" class="card__meta">{{ item.ubicacion }}</p>
-      </div>
+  <div class="card-zoom h-full">
+    <Card class="h-full">
+      <template #title>
+        <div class="flex flex-column gap-1">
+          <span>{{ item.rol }}</span>
+          <small class="opacity-70">
+            {{ item.empresa }}
+            <span v-if="item.ubicacion"> · {{ item.ubicacion }}</span>
+          </small>
+        </div>
+      </template>
 
-      <p class="card__dates">
-        <em>{{ item.fechaInicio }} - {{ item.fechaFin ?? 'Presente' }}</em>
-      </p>
-    </header>
+      <template #content>
+        <div class="flex flex-column gap-3">
+          <div class="opacity-80">
+            {{ rangoFechas }}
+          </div>
 
-    <p class="card__desc">{{ item.descripcion }}</p>
+          <p class="m-0" style="text-align: justify">
+            {{ item.descripcion }}
+          </p>
 
-    <ul v-if="item.logros?.length" class="card__list">
-      <li v-for="(logro, idx) in item.logros" :key="`${item.empresa}-logro-${idx}`">
-        {{ logro }}
-      </li>
-    </ul>
+          <div v-if="item.logros?.length">
+            <h4 class="m-0 mb-2">Logros</h4>
+            <ul class="m-0 pl-3 text-left">
+              <li v-for="(logro, idx) in item.logros" :key="idx" class="mb-2">
+                {{ logro }}
+              </li>
+            </ul>
+          </div>
 
-    <div v-if="item.tecnologias?.length" class="card__tags">
-      <span v-for="(tech, idx) in item.tecnologias" :key="`${item.empresa}-tech-${idx}`" class="tag">
-        {{ tech }}
-      </span>
-    </div>
-  </article>
+          <div v-if="item.tecnologias?.length">
+            <h4 class="m-0 mb-2">Tecnologías</h4>
+            <div class="flex flex-wrap gap-2">
+              <Tag
+                v-for="(tech, idx) in item.tecnologias"
+                :key="idx"
+                :value="tech"
+                severity="secondary"
+              />
+            </div>
+          </div>
+        </div>
+      </template>
+    </Card>
+  </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+import Card from 'primevue/card'
+import Tag from 'primevue/tag'
+
 type ExperienceItem = {
   rol: string
   empresa: string
@@ -40,56 +63,27 @@ type ExperienceItem = {
   tecnologias?: string[]
 }
 
-defineProps<{
-  item?: ExperienceItem
+const props = defineProps<{
+  item: ExperienceItem
 }>()
+
+const rangoFechas = computed(() => {
+  const inicio = props.item.fechaInicio
+  const fin = props.item.fechaFin ?? 'Actualidad'
+  return `${inicio} — ${fin}`
+})
 </script>
 
 <style scoped>
-.card {
-  border: 1px solid #2a2a2a;
-  border-radius: 12px;
-  padding: 1rem;
+.card-zoom {
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+  transform: translateZ(0);
 }
-.card__header {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  align-items: flex-start;
-}
-.card__title {
-  margin: 0;
-}
-.card__subtitle {
-  margin: 0.25rem 0 0;
-  font-weight: 600;
-}
-.card__meta {
-  margin: 0.25rem 0 0;
-  opacity: 0.8;
-}
-.card__dates {
-  margin: 0;
-  white-space: nowrap;
-  opacity: 0.9;
-}
-.card__desc {
-  margin: 0.75rem 0 0;
-}
-.card__list {
-  margin: 0.75rem 0 0;
-  padding-left: 1.2rem;
-}
-.card__tags {
-  margin-top: 0.75rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-.tag {
-  border: 1px solid #2a2a2a;
-  border-radius: 999px;
-  padding: 0.25rem 0.6rem;
-  font-size: 0.9rem;
+
+.card-zoom:hover {
+  transform: scale(1.01);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 </style>

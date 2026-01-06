@@ -1,13 +1,12 @@
-
 {
   "acercaDeMi": {
     "titulo": "Acerca de mí",
-    "resumen": "Desarrollador/a web con enfoque en frontend y buenas prácticas. Me gusta construir interfaces claras, rápidas y mantenibles.",
+    "resumen": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos. Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos. Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
     "ubicacion": "España",
     "disponibilidad": "Abierto/a a nuevas oportunidades",
     "foto": {
       "alt": "Foto de perfil",
-      "url": "/assets/profile.jpg"
+      "url": "/profile.png"
     },
     "enlaces": [
       { "label": "GitHub", "url": "https://github.com/usuario" },
@@ -98,9 +97,7 @@
         "descripcion": "Portfolio personal con secciones dinámicas, rutas y componentes reutilizables.",
         "tags": ["Vue", "TypeScript", "Vite"],
         "destacado": true,
-        "imagenes": [
-          { "alt": "Captura principal", "url": "/assets/projects/portfolio-1.png" }
-        ],
+        "imagenes": [{ "alt": "Captura principal", "url": "/assets/projects/portfolio-1.png" }],
         "links": {
           "demo": "https://demo-portfolio.example.com",
           "repo": "https://github.com/usuario/portfolio"
@@ -111,9 +108,7 @@
         "descripcion": "Dashboard con filtros, tablas y gráficos a partir de una API.",
         "tags": ["Vue", "Pinia", "REST"],
         "destacado": false,
-        "imagenes": [
-          { "alt": "Vista dashboard", "url": "/assets/projects/dashboard-1.png" }
-        ],
+        "imagenes": [{ "alt": "Vista dashboard", "url": "/assets/projects/dashboard-1.png" }],
         "links": {
           "demo": null,
           "repo": "https://github.com/usuario/dashboard"
