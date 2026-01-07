@@ -10,8 +10,8 @@
       <!-- Columna imagen -->
       <div class="col-12 md:col-4">
         <Image
-          :src="portfolio.data.acercaDeMi?.foto.url"
-          :alt="portfolio.data.acercaDeMi?.foto.alt"
+          :src="portfolio.data.acercaDeMi?.foto?.url"
+          :alt="portfolio.data.acercaDeMi?.foto?.alt"
           imageClass="w-full border-round img-doble"
           preview
         />

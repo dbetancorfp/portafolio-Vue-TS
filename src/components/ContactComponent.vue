@@ -191,7 +191,7 @@ import { computed, reactive, ref } from 'vue'
 
 import IftaLabel from 'primevue/iftalabel'
 import Dialog from 'primevue/dialog'
-import privacy from '@/data/politica-privacidad.json'
+import privacy from '../data/politica-privacidad.json'
 import InputText from 'primevue/inputtext'
 import Textarea from 'primevue/textarea'
 import Dropdown from 'primevue/dropdown'
